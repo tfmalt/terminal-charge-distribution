@@ -3,8 +3,7 @@ import './App.css';
 
 fetch('https://api.malt.no/terminal/rates.json')
     .then( (response) => {
-      alert("response");
-      console.log("response:", response);
+      console.log("response:", response.body);
     });
 
 class Tcd extends Component {
