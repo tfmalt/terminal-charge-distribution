@@ -11,7 +11,7 @@ class Tcd extends Component {
     return (
       <div className="Tcd">
         <div className="Tcd-header">
-          <h2>Terminal Container Charge Distribution</h2>
+          <h2>Terminal Handling Charges Distribution</h2>
         </div>
         <p className="App-intro">
             Let's start to see some code here.
