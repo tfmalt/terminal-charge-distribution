@@ -12,14 +12,14 @@
 
 .Tcd-header {
   background-color: #786;
-  height: 48px;
+  /* height: 42px; */
   color: white;
   vertical-align: center;
 }
 
 .Tcd-header h2 {
-    font-size: 24px;
-    padding: 10px 12px;
+    font-size: 4.8vw;
+    padding: 12px 12px;
     margin: 0;
 }
 
