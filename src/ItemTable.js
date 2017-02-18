@@ -1,37 +1,37 @@
-/**
- * First attempts at writing a react component.
- */
 import React, {Component} from 'react';
+import apis from './services';
 import 'whatwg-fetch';
 
 class PortRow extends Component {
   render() {
-    let port;
-    return <li>foo</li>;
+    let port = this.props.port;
+
+    return (
+      <tr>
+        <td>{port.port}</td>
+        <td>{port.currency}</td>
+        <td>{port.value}</td>
+      </tr>
+    );
   }
 }
 
 class ItemTable extends Component {
   render() {
-    let rates = fetch('https://api.malt.no/terminal/rates.json').then((response) => {
-      console.log(
-        'got data:', response.status,
-        ' - ', response.headers.get('Content-Type')
-      );
-      return response.json();
-    }).then( (json) => {
-      return json.map( (item) => {
-        return <PortRow port={item} />
+    apis.rates.then((list) => {
+      let rates = list.map((item) => {
+        return (<PortRow port={item} key={item.port}/>);
       });
+      return rates;
+    }).then((rates) => {
+      return (
+        <table>
+          <tbody>
+            {rates}
+          </tbody>
+        </table>
+      );
     });
-
-    return (
-      <table>
-        <tbody>
-        {rates}
-      </tbody>
-      </table>
-    );
   }
 }
 
