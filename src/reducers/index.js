@@ -1,20 +1,22 @@
 import {combineReducers} from 'redux';
 import {GET_RATES, GOT_RATES} from '../actions';
 
-const rates = (state = {
+const defaultState = {
   isFetching: false,
   items: [],
   lastUpdated: null
-}, action) => {
+};
+
+const rates = (state = defaultState, action) => {
   switch (action.type) {
     case GET_RATES:
       return {
-        state,
+        ...state,
         isFetching: true
       };
     case GOT_RATES:
       return {
-        state,
+        ...state,
         isFetching: false,
         items: action.rates,
         lastUpdated: action.receivedAt
