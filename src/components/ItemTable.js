@@ -1,8 +1,11 @@
-import React, {Component} from 'react';
-import apis from './services';
+import React, {Component, PropTypes} from 'react';
 import 'whatwg-fetch';
 
 class PortRow extends Component {
+  static propTypes = {
+    port: PropTypes.object.isRequired
+  }
+
   render() {
     let port = this.props.port;
 
@@ -17,21 +20,28 @@ class PortRow extends Component {
 }
 
 class ItemTable extends Component {
+  static propTypes = {
+    items: PropTypes.array.isRequired
+  }
+
   render() {
-    apis.rates.then((list) => {
-      let rates = list.map((item) => {
-        return (<PortRow port={item} key={item.port}/>);
-      });
-      return rates;
-    }).then((rates) => {
-      return (
-        <table>
-          <tbody>
-            {rates}
-          </tbody>
-        </table>
-      );
-    });
+    console.log('item table props: ', this.props);
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Port</th>
+            <th>Currency</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.props.items.map( (item, index) => (
+              <PortRow port={item} key={index} />
+          ))}
+        </tbody>
+      </table>
+    );
   }
 }
 
