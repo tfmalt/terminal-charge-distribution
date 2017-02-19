@@ -1,4 +1,3 @@
-import 'whatwg-fetch';
 import apis from '../services';
 
 export const GET_RATES = 'GET_RATES';
@@ -53,7 +52,6 @@ const shouldFetchRates = (state) => {
 };
 
 export const fetchRatesIfNeeded = () => (dispatch, getState) => {
-  console.log('fetchRatesIfNeeded got called');
   if (shouldFetchRates(getState())) {
     return dispatch(fetchRates());
   }

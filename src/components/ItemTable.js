@@ -25,7 +25,6 @@ class ItemTable extends Component {
   }
 
   render() {
-    console.log('item table props: ', this.props);
     return (
       <table>
         <thead>
