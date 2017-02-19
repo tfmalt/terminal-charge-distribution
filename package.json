@@ -1,6 +1,6 @@
 {
   "name": "terminal-charge-distribution",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Example App calculating container handling charge distribution",
   "private": true,
   "devDependencies": {
@@ -13,6 +13,8 @@
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
+    "redux-logger": "^2.8.1",
+    "redux-thunk": "^2.2.0",
     "whatwg-fetch": "^2.0.2"
   },
   "scripts": {

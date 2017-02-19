@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 .body {
     margin: 0;
 }
@@ -21,11 +17,26 @@
     font-size: 4.8vw;
     padding: 12px 12px;
     margin: 0;
+    color: white;
 }
 
 .App-intro {
   font-size: large;
 }
+
+div#THCDItemList {
+  margin: 12px;
+}
+
+div#THCDItemList table thead tr th {
+  border-bottom: 1px solid #aaa;
+  padding: 2px 8px;
+  text-align: left;
+}
+
+div#THCDItemList table tbody tr td {
+  padding: 2px 8px;
+};
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
