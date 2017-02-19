@@ -28,12 +28,12 @@ const fetchRates = () => (dispatch) => {
 
 const shouldFetchRates = (state) => {
   if (!state.rates.items) {
-    console.log("should fetch rates: no items");
+    console.log('should fetch rates: no items');
     return true;
   }
 
   if (!(state.rates.items instanceof Array)) {
-    console.log("should fetch rates: items not array");
+    console.log('should fetch rates: items not array');
     return true;
   }
 
