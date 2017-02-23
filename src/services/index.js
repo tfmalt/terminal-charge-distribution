@@ -1,22 +1,27 @@
+/**
+ * Collection for handling all the API endpoints in one place
+ *
+ * @author Thomas Malt <thomas@malt.no>
+ * @license MIT
+ */
 import 'whatwg-fetch';
+
+const urlRoot = 'https://api.malt.no';
 
 /**
  * Object literal helper collecting all web service API's
  */
 const apis = {
-  ratesUrl:  'https://api.malt.no/terminal/rates.json',
-  ratesData: null,
+  url: {
+    rates:     `${urlRoot}/terminal/rates.json`,
+    countries: `${urlRoot}/rates/countries`
+  },
 
   /**
    * Using fetch to get all the rates.
    */
   get rates() {
-    if (this.ratesData instanceof Array) {
-      console.log('Found existing rates data:', this.ratesData[0]);
-      return this.ratesData;
-    }
-
-    return fetch(this.ratesUrl)
+    return fetch(this.url.rates)
       .then( (response) => {
         if (response.ok) {
           return response.json();
@@ -31,6 +36,26 @@ const apis = {
       .catch( (error) => {
         console.error('Caught error fetching rates:', error);
       });
+  },
+
+  get countries() {
+    return fetch(this.url.countries).then( (response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Got response but response was not ok.');
+    }).catch( (error) => {
+      console.error('Caught error fetching countries:', error);
+    });
+  },
+
+  distribution(country) {
+    return fetch(`${urlRoot}/rates/${country}/distribution`).then( (response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Got response but response was not ok');
+    });
   }
 };
 
