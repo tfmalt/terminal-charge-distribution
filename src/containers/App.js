@@ -1,22 +1,23 @@
 import React, {Component, PropTypes} from 'react';
 import AppBar from 'material-ui/AppBar';
-import ItemTable from '../components/ItemTable';
+import CountrySelect from '../components/CountrySelect';
 import {connect} from 'react-redux';
-import {fetchRatesIfNeeded} from '../actions';
+// import {fetchRatesIfNeeded} from '../actions';
 import '../App.css';
 
 class App extends Component {
   static propTypes = {
-    isFetching: PropTypes.bool.isRequired,
-    items: PropTypes.array.isRequired,
-    lastUpdated: PropTypes.number,
+    rates: PropTypes.object.isRequired,
+    countries: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired
   }
 
+  /*
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch(fetchRatesIfNeeded());
   }
+  */
 
   render() {
     return (
@@ -25,18 +26,25 @@ class App extends Component {
           title="Terminal Handling Charges"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
         />
-        <div id="THCDItemList">
-          <ItemTable items={this.props.items}/>
+        <div id="thcSearchBar">
+          <CountrySelect
+            dispatch={this.props.dispatch}
+            countries={this.props.countries}
+          />
+        </div>
+        <div id="distributionView">
+          <div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  const {rates} = state;
-  const {isFetching, lastUpdated, items} = rates;
-  return {isFetching, lastUpdated, items};
-}
+// const mapStateToProps = (state) => {
+  // Destructuring the state object to create meaningful props.
+  // const {rates, countries} = state;
+  // return state;
+// }
 
-export default connect(mapStateToProps)(App);
+export default connect((state) => (state))(App);
