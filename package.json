@@ -1,17 +1,20 @@
 {
-  "name": "terminal-charge-distribution",
-  "version": "0.2.0",
+  "name": "Terminal Handling Charges Distribution Web Frontend",
+  "version": "0.3.1",
   "description": "Example App calculating container handling charge distribution",
   "private": true,
   "devDependencies": {
+    "babel-preset-stage-1": "^6.22.0",
     "gh-pages": "^0.12.0",
     "react-scripts": "0.9.0",
     "redux-devtools": "^3.3.2"
   },
   "dependencies": {
+    "material-ui": "^0.17.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
+    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-logger": "^2.8.1",
     "redux-thunk": "^2.2.0",
