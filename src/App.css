@@ -36,7 +36,23 @@ div#THCDItemList table thead tr th {
 
 div#THCDItemList table tbody tr td {
   padding: 2px 8px;
-};
+}
+
+
+div#thcSearchBar {
+  margin: 0px 12px;
+}
+
+div#distributionView {
+  padding: 12px 2vw;
+}
+
+div#distributionView div {
+  width: 96vw;
+  height: 56vw;
+  background-color: #eeeeee;
+  border: 1px solid #ccc;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
