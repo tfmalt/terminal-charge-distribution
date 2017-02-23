@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import 'whatwg-fetch';
 
 class PortRow extends Component {
   static propTypes = {
