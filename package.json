@@ -1,9 +1,10 @@
 {
-  "name": "Terminal Handling Charges Distribution Web Frontend",
+  "name": "thcd-web-frontend",
   "version": "0.3.1",
   "description": "Example App calculating container handling charge distribution",
   "private": true,
   "devDependencies": {
+    "babel-plugin-recharts": "^1.1.0",
     "babel-preset-stage-1": "^6.22.0",
     "gh-pages": "^0.12.0",
     "react-scripts": "0.9.0",
@@ -12,9 +13,11 @@
   "dependencies": {
     "material-ui": "^0.17.0",
     "react": "^15.4.2",
+    "react-addons-transition-group": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-tap-event-plugin": "^2.0.1",
+    "recharts": "^0.20.8",
     "redux": "^3.6.0",
     "redux-logger": "^2.8.1",
     "redux-thunk": "^2.2.0",
