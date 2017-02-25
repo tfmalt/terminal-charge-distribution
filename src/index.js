@@ -1,3 +1,11 @@
+/**
+ * Small test react app to first of all teach myself react+redux+thunk, second
+ * of all as a repsonse to a coding challenge.
+ *
+ * @author Thomas Malt <thomas@malt.no>
+ * @copyright 2017 (c) Thomas Malt
+ * @license MIT
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -13,6 +21,8 @@ import './index.css';
 injectTapEventPlugin();
 
 const middleware = [thunk];
+
+// only adding logger when not running in production.
 if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger());
 }
