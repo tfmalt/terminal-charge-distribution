@@ -79,7 +79,6 @@ const distribution = (state = defaultState.distribution, action) => {
       }
       return data;
     case COUNTRY_SELECTED:
-      console.log('COUNTRY_SELECTED:', state, action);
       return {
         ...state,
         selectedCountry: action.country

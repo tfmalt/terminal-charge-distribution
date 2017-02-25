@@ -10,8 +10,8 @@
 import React, {Component, PropTypes} from 'react';
 import {
   AreaChart,
-  YAxis,
   Area,
+  XAxis,
   ResponsiveContainer,
   CartesianGrid
 } from 'recharts';
@@ -27,7 +27,6 @@ class DistributionChart extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    console.log('DistributionChart componentWillReceiveProps:', nextProps);
     const {distribution} = nextProps;
     if (
       distribution.selectedCountry !== '' &&
@@ -43,20 +42,27 @@ class DistributionChart extends Component {
       let percentiles = distribution[current].data.percentiles;
 
       let data = percentiles.map( (item) => {
-        return (item.outlier) ? {outlier: item.usd, amount: item.usd} : {amount: item.usd};
+        let point = {
+          amount: item.usd,
+          xkey:   item.usd.toFixed(2)
+        };
+        if (item.outlier) {
+          point.outlier = item.usd;
+        }
+        return point;
       });
-
+      console.log('DistributionChart updateDataWithNewProps');
       this.setState({data});
   }
 
   render() {
     return (
-      <ResponsiveContainer aspect={2.32} width="100%">
+      <ResponsiveContainer>
         <AreaChart
           data={this.state.data}
           margin={{top: 0, right: 0, left: 0, bottom: 0}}
         >
-          <YAxis />
+          <XAxis dataKey="xkey" />
           <CartesianGrid strokeDasharray="3 3" horizontal={true} />
           <Area
             dataKey="amount"

@@ -6,51 +6,18 @@
     margin: 0;
 }
 
-.Tcd-header {
-  background-color: #786;
-  /* height: 42px; */<
-  color: white;
-  vertical-align: center;
-}
-
-.Tcd-header h2 {
-    font-size: 4.8vw;
-    padding: 12px 12px;
-    margin: 0;
-    color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-div#THCDItemList {
-  margin: 12px;
-}
-
-div#THCDItemList table thead tr th {
-  border-bottom: 1px solid #aaa;
-  padding: 2px 8px;
-  text-align: left;
-}
-
-div#THCDItemList table tbody tr td {
-  padding: 2px 8px;
-}
-
-
 div#thcSearchBar {
   margin: 0px 12px;
 }
 
 div#distributionView {
-  padding: 0px 12px;
+  /* display: flex;
+  flex-flow: column; */
+  margin: 12px;
+  height: 76vh;
 }
 
 div#distributionView div {
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  /* flex: 1 1 auto; */
+  background-color: #f4f4f4;
 }

@@ -17,7 +17,6 @@ class App extends Component {
 
   componentWillMount() {
     const {dispatch} = this.props;
-    console.log('App componentWillMount:', this.props);
     dispatch(fetchCountriesIfNeeded());
   }
 

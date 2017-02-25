@@ -27,7 +27,6 @@ export const receivedDistribution = (data) => {
 };
 
 export const setSelectedCountry = (country) => {
-  console.log('setSelectedCountry:', country);
   return {
     type: COUNTRY_SELECTED,
     country
