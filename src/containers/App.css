@@ -29,13 +29,16 @@ div#thcSearchBar {
 div#distributionView {
   margin: 12px;
   flex-shrink: 1;
-  flex-grow: 1;
+  flex-grow: 10;
   flex-basis: auto;
   height: 50vh;
 }
 
 div#distributionView div {
-  background-color: #f5f5f5
+  background-color: #f5f5f5;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: auto;
 }
 
 .thcd div#footer {
