@@ -20,7 +20,7 @@ div#thcSearchBar {
 div#distributionView {
   margin: 12px;
   flex: 1 0 auto;
-  height: 10vh;
+  height: 50vh;
 }
 
 div#distributionView div {
