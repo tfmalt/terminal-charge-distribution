@@ -42,7 +42,7 @@ class App extends Component {
           />
         </div>
         <div id="footer">
-          thcd web frontend v{version}
+          thcd web frontend - version v{version} 
         </div>
       </div>
     );

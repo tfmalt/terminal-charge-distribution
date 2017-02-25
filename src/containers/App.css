@@ -8,28 +8,34 @@
 
 .thcd {
   display: flex;
+  flex-flow: column;
+  height: 100vh;
 }
 
 div#thcSearchBar {
   margin: 0px 12px;
+  flex: 0 1 auto;
 }
 
 div#distributionView {
-  /* display: flex;
-  flex-flow: column; */
   margin: 12px;
-  height: 76vh;
+  flex: 1 0 auto;
+  height: 10vh;
 }
 
 div#distributionView div {
-  /* flex: 1 1 auto; */
-  background-color: #f0f0f0;
+  flex: 1 0 auto;
+  background-color: #f5f5f5
 }
 
 .thcd div#footer {
-  height: 40px;
+  flex: 0 1 auto;
   text-align: center;
+  height: 24px;
+  width: 100%;
+  padding-top: 12px;
+  font-size: 12px;
   font-family: roboto;
-  color: #ccc;
-  background-color: #ccccff;
+  color: #616161;
+  margin: auto;
 }
