@@ -1,7 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import {fetchCountriesIfNeeded, fetchDistributionIfNeeded} from '../actions';
+import {
+  fetchDistributionIfNeeded,
+  setSelectedCountry
+} from '../actions';
 
 class CountrySelect extends Component {
 
@@ -11,7 +14,7 @@ class CountrySelect extends Component {
   }
 
   state = {
-    value: 'CN'
+    value: ''
   };
 
   constructor(props) {
@@ -23,19 +26,30 @@ class CountrySelect extends Component {
     const {dispatch} = this.props;
     this.setState({value});
     dispatch(fetchDistributionIfNeeded(value));
+    dispatch(setSelectedCountry(value));
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(nextProps) {
+    const {countries} = nextProps;
+    this.setCountryOnInitialRender(countries.countries);
+  }
+
+  setCountryOnInitialRender(countries) {
     const {dispatch} = this.props;
-    dispatch(fetchCountriesIfNeeded());
-    dispatch(fetchDistributionIfNeeded('CN'));
+
+    if (this.state.value === '' && Object.keys(countries).length > 0) {
+      let country = Object.keys(countries)[0];
+      this.setState({value: country});
+      dispatch(setSelectedCountry(country));
+      dispatch(fetchDistributionIfNeeded(country));
+    }
   }
 
   render() {
     let ctr = this.props.countries.countries;
     return (
       <SelectField
-        floatingLabelText="Enter country"
+        floatingLabelText="Select country"
         value={this.state.value}
         onChange={this.handleChange}
       >

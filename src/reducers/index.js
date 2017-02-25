@@ -5,8 +5,10 @@ import {
   FETCHING_COUNTRIES,
   RECEIVED_COUNTRIES,
   FETCHING_DISTRIBUTION,
-  RECEIVED_DISTRIBUTION
+  RECEIVED_DISTRIBUTION,
+  COUNTRY_SELECTED
 } from '../actions';
+
 
 const defaultState = {
   rates: {
@@ -19,7 +21,9 @@ const defaultState = {
     countries: {},
     lastUpdated: null
   },
-  distribution: {}
+  distribution: {
+    selectedCountry: ''
+  }
 };
 
 const rates = (state = defaultState.rates, action) => {
@@ -68,14 +72,18 @@ const distribution = (state = defaultState.distribution, action) => {
       return stuff;
     case RECEIVED_DISTRIBUTION:
       let data = {...state};
-
       data[action.country] = {
         data: action.data,
         lastUpdated: action.receivedAt,
         isFetching: false
       }
-
       return data;
+    case COUNTRY_SELECTED:
+      console.log('COUNTRY_SELECTED:', state, action);
+      return {
+        ...state,
+        selectedCountry: action.country
+      };
     default:
       return state;
   }

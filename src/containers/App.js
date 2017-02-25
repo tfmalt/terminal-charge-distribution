@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import AppBar from 'material-ui/AppBar';
 import CountrySelect from '../components/CountrySelect';
+import DistributionChart from '../components/DistributionChart';
+import {fetchCountriesIfNeeded} from '../actions';
 import {connect} from 'react-redux';
 // import {fetchRatesIfNeeded} from '../actions';
 import '../App.css';
@@ -9,15 +11,15 @@ class App extends Component {
   static propTypes = {
     rates: PropTypes.object.isRequired,
     countries: PropTypes.object.isRequired,
+    distribution: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired
   }
 
-  /*
-  componentDidMount() {
+  componentWillMount() {
     const {dispatch} = this.props;
-    dispatch(fetchRatesIfNeeded());
+    console.log('App componentWillMount:', this.props);
+    dispatch(fetchCountriesIfNeeded());
   }
-  */
 
   render() {
     return (
@@ -33,8 +35,10 @@ class App extends Component {
           />
         </div>
         <div id="distributionView">
-          <div>
-          </div>
+          <DistributionChart
+            dispatch={this.props.dispatch}
+            distribution={this.props.distribution}
+          />
         </div>
       </div>
     );
