@@ -31,7 +31,7 @@ div#distributionView {
   flex-shrink: 1;
   flex-grow: 10;
   flex-basis: auto;
-  height: 52vh;
+  height: 54vh;
 }
 
 div#distributionView div {
