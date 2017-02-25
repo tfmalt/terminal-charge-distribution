@@ -25,10 +25,12 @@ class App extends Component {
   render() {
     return (
       <div className="thcd">
-        <AppBar
-          title="Terminal Handling Charges"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-        />
+        <div id="theAppBar">
+          <AppBar
+            title="Terminal Handling Charges"
+            iconClassNameRight="muidocs-icon-navigation-expand-more"
+          />
+        </div>
         <div id="thcSearchBar">
           <CountrySelect
             dispatch={this.props.dispatch}
@@ -42,7 +44,7 @@ class App extends Component {
           />
         </div>
         <div id="footer">
-          thcd web frontend - version v{version} 
+          thcd web frontend - version v{version}
         </div>
       </div>
     );
