@@ -4,8 +4,10 @@ import CountrySelect from '../components/CountrySelect';
 import DistributionChart from '../components/DistributionChart';
 import {fetchCountriesIfNeeded} from '../actions';
 import {connect} from 'react-redux';
+import {version} from '../../package';
+
 // import {fetchRatesIfNeeded} from '../actions';
-import '../App.css';
+import './App.css';
 
 class App extends Component {
   static propTypes = {
@@ -22,7 +24,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="Tcd">
+      <div className="thcd">
         <AppBar
           title="Terminal Handling Charges"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
@@ -38,6 +40,9 @@ class App extends Component {
             dispatch={this.props.dispatch}
             distribution={this.props.distribution}
           />
+        </div>
+        <div id="footer">
+          thcd web frontend v{version}
         </div>
       </div>
     );

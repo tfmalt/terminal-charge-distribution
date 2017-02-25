@@ -6,6 +6,10 @@
     margin: 0;
 }
 
+.thcd {
+  display: flex;
+}
+
 div#thcSearchBar {
   margin: 0px 12px;
 }
@@ -19,5 +23,13 @@ div#distributionView {
 
 div#distributionView div {
   /* flex: 1 1 auto; */
-  background-color: #f4f4f4;
+  background-color: #f0f0f0;
+}
+
+.thcd div#footer {
+  height: 40px;
+  text-align: center;
+  font-family: roboto;
+  color: #ccc;
+  background-color: #ccccff;
 }
