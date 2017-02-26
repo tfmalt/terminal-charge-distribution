@@ -7,4 +7,4 @@
 export * from './rates';
 export * from './countries';
 export * from './distribution';
-export * from './appview';
+export * from './addnewview';
