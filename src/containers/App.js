@@ -1,7 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import AppBar from 'material-ui/AppBar';
+import TextField from 'material-ui/TextField';
 import CountrySelect from '../components/CountrySelect';
 import DistributionChart from '../components/DistributionChart';
+import AppMenu from '../components/AppMenu';
 import {fetchCountriesIfNeeded} from '../actions';
 import {connect} from 'react-redux';
 import {version} from '../../package';
@@ -14,7 +16,12 @@ class App extends Component {
     rates: PropTypes.object.isRequired,
     countries: PropTypes.object.isRequired,
     distribution: PropTypes.object.isRequired,
+    appmenu: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired
+  }
+
+  state = {
+    whichView: 'chart'
   }
 
   componentWillMount() {
@@ -23,25 +30,56 @@ class App extends Component {
   }
 
   render() {
+    const {appmenu} = this.props;
+    console.log('App told to render:', appmenu);
+
+    const header = (
+      <div id="theAppBar">
+        <AppBar
+          title="Charge Distribution"
+          iconElementLeft={<AppMenu dispatch={this.props.dispatch} />}
+        />
+      </div>
+    );
+
+    const searchBar = (
+      <div id="thcSearchBar">
+        <CountrySelect
+          dispatch={this.props.dispatch}
+          countries={this.props.countries}
+        />
+      </div>
+    );
+
+    const addView = (
+      <div id="addView" style={{margin: "0px 12px"}} >
+        <TextField floatingLabelText="Enter port code" />
+        <TextField floatingLabelText="Enter amount" />
+        <TextField floatingLabelText="Currency" />
+      </div>
+    );
+
+    let currentView = [];
+    if (appmenu.currentView === 'chart') {
+      currentView = [
+        searchBar, (
+          <div id="distributionView">
+            <DistributionChart
+              dispatch={this.props.dispatch}
+              distribution={this.props.distribution}
+            />
+          </div>
+        )];
+    }
+    else if (appmenu.currentView === 'add') {
+      currentView = addView;
+    }
+
     return (
       <div className="thcd">
-        <div id="theAppBar">
-          <AppBar
-            title="Terminal Handling Charges"
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
-          />
-        </div>
-        <div id="thcSearchBar">
-          <CountrySelect
-            dispatch={this.props.dispatch}
-            countries={this.props.countries}
-          />
-        </div>
-        <div id="distributionView">
-          <DistributionChart
-            dispatch={this.props.dispatch}
-            distribution={this.props.distribution}
-          />
+        {header}
+        <div id="theView">
+          {currentView}
         </div>
         <div id="footer">
           thcd web frontend - version v{version}
