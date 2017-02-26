@@ -14,7 +14,29 @@ const urlRoot = 'https://api.malt.no';
 const apis = {
   url: {
     rates:     `${urlRoot}/terminal/rates.json`,
-    countries: `${urlRoot}/rates/countries`
+    countries: `${urlRoot}/rates/countries`,
+    postnew:   `${urlRoot}/rates/add`
+  },
+
+  /**
+   * Function for posting a new rate to the server.
+   *
+   * @param {object} data The json object to post
+   * @return {Promise} A promise with the result is returned.
+   */
+  postNewRate(data) {
+    return fetch(this.url.postnew, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then( (res) => {
+      console.log('Got result from posting data:', res);
+    }).catch( (error) => {
+      console.error('apis postNewRate got error from service:', error);
+    });
   },
 
   /**
