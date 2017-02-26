@@ -7,23 +7,6 @@ import IconButton from 'material-ui/IconButton';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
 class AppMenu extends Component {
-  // static propTypes = {
-  //   dispatch: PropTypes.func.isRequired
-  // }
-
-  // constructor(props) {
-  //   super(props);
-  //   this.handleMenuTouchTap = this.handleMenuTouchTap.bind(this);
-  // }
-
-  // handleMenuTouchTap(event, menuitem) {
-  //   const {value} = menuitem.props;
-  //   const {dispatch} = this.props;
-  //
-  //   console.log('AppMenu handleMenuTouchTap value', value);
-  //   // dispatch(setCurrentAppView(value));
-  // }
-
   render() {
     return (
       <IconMenu
