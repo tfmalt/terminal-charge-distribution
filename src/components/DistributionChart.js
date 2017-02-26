@@ -13,8 +13,10 @@ import {
   Area,
   XAxis,
   ResponsiveContainer,
+  Tooltip,
   CartesianGrid
 } from 'recharts';
+import './DistributionChart.css';
 
 class DistributionChart extends Component {
   static propTypes = {
@@ -51,7 +53,6 @@ class DistributionChart extends Component {
         }
         return point;
       });
-      console.log('DistributionChart updateDataWithNewProps');
       this.setState({data});
   }
 
@@ -64,6 +65,9 @@ class DistributionChart extends Component {
         >
           <XAxis dataKey="xkey" />
           <CartesianGrid strokeDasharray="3 3" horizontal={true} />
+          <Tooltip
+            coordinate={{x: 10, y: 10}}
+          />
           <Area
             dataKey="amount"
             strokeWidth={2}
