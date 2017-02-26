@@ -6,7 +6,8 @@ import {
   RECEIVED_COUNTRIES,
   FETCHING_DISTRIBUTION,
   RECEIVED_DISTRIBUTION,
-  COUNTRY_SELECTED
+  COUNTRY_SELECTED,
+  SET_APP_VIEW
 } from '../actions';
 
 
@@ -23,6 +24,21 @@ const defaultState = {
   },
   distribution: {
     selectedCountry: ''
+  },
+  appmenu: {
+    currentView: 'chart'
+  }
+};
+
+const appmenu = (state = defaultState.appmenu, action) => {
+  switch (action.type) {
+    case SET_APP_VIEW:
+      return {
+        ...state,
+        currentView: action.currentView
+      };
+    default:
+      return state;
   }
 };
 
@@ -89,7 +105,7 @@ const distribution = (state = defaultState.distribution, action) => {
 };
 
 const rootReducer = combineReducers({
-  rates, countries, distribution
+  rates, countries, distribution, appmenu
 });
 
 export default rootReducer;
