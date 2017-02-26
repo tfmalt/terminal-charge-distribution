@@ -1,20 +1,38 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import AppBar from 'material-ui/AppBar';
 import AppMenu from '../components/AppMenu';
 import Footer from '../components/Footer';
-import RaisedButton from 'material-ui/RaisedButton'
+import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import {submitNewRate} from '../actions';
 import {connect} from 'react-redux';
 import './AddNew.css';
 
 class AddNew extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired
+  }
+
   constructor(props) {
     super(props);
+
     this.state = {
-      amount: '',
-      currency: '',
-      supplier: '',
-      code: ''
+      amount:   {
+        value:     '',
+        errorText: ''
+      },
+      currency: {
+        value:     '',
+        errorText: ''
+      },
+      supplier: {
+        value:     '',
+        errorText: ''
+      },
+      port:     {
+        value:     '',
+        errorText: ''
+      }
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,20 +40,47 @@ class AddNew extends Component {
   }
 
   handleSubmit(event) {
+    const {dispatch} = this.props;
+
     console.log('AddNew handleOnSubmit:', event);
+    dispatch(submitNewRate(this.state));
     event.preventDefault();
+    return false;
   }
 
-  handleChange(proxy, value) {
-    const {nativeEvent} = proxy;
-    const id = nativeEvent.target.id;
+  handleChange(event, value) {
+    const id = event.target.id;
 
-    console.log('AddNew handleChange event:', id, value);
+    let state = this.state;
+    if (id === 'port' && typeof value === 'string') {
+      value = value.toUpperCase();
+      if (value.length > 5) {
+        state[id].errorText = 'Must be 5 letters';
+      } else if (value.match(/[^A-Z]/)) {
+        state[id].errorText = 'Only letters A-Z';
+      } else {
+        state[id].errorText = '';
+      }
+    }
+
+    if (id === 'amount') {
+      if (value.match(/[^0-9\.]/)) {
+        state[id].errorText = 'Only numbers and .';
+      } else {
+        state[id].errorText = '';
+      }
+    }
+
+    state[id].value = value;
+    this.setState(state);
+
+    console.log('AddNew handleChange event:', state);
   }
 
   componentDidMount() {
     console.log('AddNew componentDidMount');
   }
+
   render() {
     return (
       <div className="thcd">
@@ -48,30 +93,32 @@ class AddNew extends Component {
       <div id="addView">
         <form id="addNewForm" onSubmit={this.handleSubmit}>
           <TextField
-            id="code"
-            value={this.state.code.value}
+            id="port"
+            value={this.state.port.value}
             onChange={this.handleChange}
             floatingLabelText="Port code"
+            errorText={this.state.port.errorText}
             fullWidth={true}
           />
           <div id="amount-container">
+            <div id="currency-wrapper">
+              <TextField
+                id="currency"
+                style={{width: '100%'}}
+                value={this.state.currency.value}
+                onChange={this.handleChange}
+                floatingLabelText="Currency"
+                fullWidth={false}
+              />
+            </div>
             <div id="amount-wrapper">
               <TextField
                 id="amount"
                 value={this.state.amount.value}
                 onChange={this.handleChange}
                 floatingLabelText="Amount"
+                errorText={this.state.amount.errorText}
                 fullWidth={true}
-              />
-            </div>
-            <div id="currency-wrapper">
-              <TextField
-                id="currency"
-                style={{width: '6em'}}
-                value={this.state.currency.value}
-                onChange={this.handleChange}
-                floatingLabelText="Currency"
-                fullWidth={false}
               />
             </div>
           </div>
@@ -80,12 +127,14 @@ class AddNew extends Component {
             value={this.state.supplier.value}
             onChange={this.handleChange}
             floatingLabelText="Supplier ID"
+            errorText={this.state.supplier.errorText}
             fullWidth={true}
           />
           <div className="button-container">
             <RaisedButton
               type="submit"
               label="Submit"
+              style={{height: 46}}
               secondary={true}
               fullWidth={true} />
           </div>
