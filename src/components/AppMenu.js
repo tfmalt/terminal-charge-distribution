@@ -17,8 +17,8 @@ class AppMenu extends Component {
         }
         onItemTouchTap={this.handleMenuTouchTap}
       >
-        <MenuItem href="/" primaryText="Distribution Chart" value="chart" />
-        <MenuItem href="/add" primaryText="Add new rate" value="add" />
+        <MenuItem href="/#/" primaryText="Distribution Chart" value="chart" />
+        <MenuItem href="/#/add" primaryText="Add new rate" value="add" />
       </IconMenu>
     );
   }
