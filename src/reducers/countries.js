@@ -4,11 +4,9 @@ import {
 } from '../actions';
 
 const defaultState = {
-  countries: {
-    isFetching: false,
-    countries: {},
-    lastUpdated: null
-  }
+  isFetching: false,
+  countries: {},
+  lastUpdated: null
 };
 
 export const countries = (state = defaultState, action) => {

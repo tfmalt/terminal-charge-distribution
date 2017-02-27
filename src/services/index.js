@@ -33,7 +33,11 @@ const apis = {
       },
       body: JSON.stringify(data)
     }).then( (res) => {
-      console.log('Got result from posting data:', res);
+      if (res.ok) {
+        return res.json();
+      }
+    }).then( (body) => {
+        console.log('Got result from posting data:', body);
     }).catch( (error) => {
       console.error('apis postNewRate got error from service:', error);
     });
@@ -72,6 +76,7 @@ const apis = {
   },
 
   distribution(country) {
+    console.log('API distribution:', country);
     return fetch(`${urlRoot}/rates/${country}/distribution`).then( (response) => {
       if (response.ok) {
         return response.json();

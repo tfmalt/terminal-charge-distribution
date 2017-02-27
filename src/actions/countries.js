@@ -19,6 +19,7 @@ export const fetchingCountries = (bool) => {
 };
 
 export const receivedCountries = (countries) => {
+  console.log('action receivedCountries', countries);
   return {
     type:       RECEIVED_COUNTRIES,
     receivedAt: Date.now(),

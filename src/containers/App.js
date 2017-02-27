@@ -7,7 +7,6 @@ import Footer from '../components/Footer';
 import {fetchCountriesIfNeeded} from '../actions';
 import {connect} from 'react-redux';
 
-// import {fetchRatesIfNeeded} from '../actions';
 import './App.css';
 
 class App extends Component {
