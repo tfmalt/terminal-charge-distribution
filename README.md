@@ -9,23 +9,27 @@ up reviewing some code.
 
 ## About the application
 
-Frontend and Backend is split into two different repositories:
+Front-end and back-end is completely split into two different repositories:
 
 - <https://github.com/tfmalt/thcd-web-frontend>
 - <https://github.com/tfmalt/thcd-api-backend>
 
-The frontend is deployed to github pages with
+The front-end is deployed to github pages with
 [gh-pages](https://www.npmjs.com/package/gh-pages), and can be found
-_in production_ on: <https://thcd.malt.no/>
+_in production_ on:
+
+- <https://thcd.malt.no/>
 
 The backend is run as a [node.js](https://nodejs.org/en/) -
 [express](http://expressjs.com/) based microservice with a nginx server
 doing TLS termination and routing.
 
-The complete separation of frontend and backend code into separate
-repositories is a conscious architectural decision, and the effect is
-greater decoupling and better testability focusing on integration- and
-end-to-end testing.
+The complete separation of front-end and back-end code is a conscious
+architectural decision. The intended effect is better decoupling,
+testability, and scalability of development effort. Development teams can
+have completely separate release schedules and focus on integration- and
+end-to-end testing when doing QA, similar to integrating with an external
+API source.
 
 ## About testing
 
