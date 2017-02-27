@@ -1,6 +1,6 @@
 {
   "name": "thcd-web-frontend",
-  "version": "0.4.4",
+  "version": "0.5.0",
   "description": "Example App calculating container handling charge distribution",
   "private": true,
   "devDependencies": {
