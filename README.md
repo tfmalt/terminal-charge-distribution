@@ -1,7 +1,7 @@
 # THCD Web Frontend
 
 This is a proof of concept web app given to me as a programming challenge.
-The acronym stands for Terminal Handling Charge Distribution. Don't ask me
+The acronym stands for **Terminal Handling Charge Distribution**. Don't ask me
 why, it was the best name I could come up with.
 
 This is my first react application, so please be mindful of that if you end
@@ -48,5 +48,5 @@ for this:
    finding my way around how to make the application work.
 
 See the [mocha](https://mochajs.org/)-[chai](http://chaijs.com/) based tests
-in the [backend repository](https://github.com/tfmalt/thcd-api-backend), 
+in the [backend repository](https://github.com/tfmalt/thcd-api-backend),
 though. I added that as an example of how I would have done it in real life.
