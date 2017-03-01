@@ -31,7 +31,6 @@ class CountrySelect extends Component {
 
   componentWillReceiveProps(nextProps) {
     const {countries} = nextProps;
-    console.log('CountrySelect componentWillReceiveProps', nextProps);
     this.setCountryOnInitialRender(countries.countries);
   }
 
@@ -39,7 +38,6 @@ class CountrySelect extends Component {
     const {dispatch} = this.props;
 
     if (this.state.value === '' && Object.keys(countryObj).length > 0) {
-      console.log('CountrySelect countries:', countryObj);
       let country = Object.keys(countryObj)[0];
       this.setState({value: country});
       dispatch(setSelectedCountry(country));
@@ -49,7 +47,6 @@ class CountrySelect extends Component {
 
   render() {
     let ctr = this.props.countries.countries;
-    console.log('CountrySelect render', this.props);
     return (
       <SelectField
         floatingLabelText="Select country"

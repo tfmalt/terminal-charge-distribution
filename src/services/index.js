@@ -8,6 +8,8 @@ import 'whatwg-fetch';
 
 const urlRoot = 'https://api.malt.no';
 
+console.log('Loading src/services: apikey:', process.env.REACT_APP_THCD_API_KEY);
+
 /**
  * Object literal helper collecting all web service API's
  */
@@ -26,9 +28,9 @@ const apis = {
    */
   postNewRate(data) {
     return fetch(this.url.postnew, {
-      method: 'POST',
+      method:  'POST',
       headers: {
-        'Accept': 'application/json',
+        Accept:         'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
@@ -37,9 +39,13 @@ const apis = {
         return res.json();
       }
     }).then( (body) => {
+      if (process.env.NODE_ENV === 'development') {
         console.log('Got result from posting data:', body);
+      }
     }).catch( (error) => {
-      console.error('apis postNewRate got error from service:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('apis postNewRate got error from service:', error);
+      }
     });
   },
 
