@@ -6,9 +6,9 @@
  */
 import 'whatwg-fetch';
 
-const urlRoot = 'https://api.malt.no';
+const urlRoot = 'https://api.malt.no/thcd';
 
-console.log('Loading src/services: apikey:', process.env.REACT_APP_THCD_API_KEY);
+// console.log('Loading src/services: apikey:', process.env.REACT_APP_THCD_API_KEY);
 
 /**
  * Object literal helper collecting all web service API's
@@ -31,7 +31,8 @@ const apis = {
       method:  'POST',
       headers: {
         Accept:         'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'apikey': 'a734c12090904aeba2e65919f5d52b48'
       },
       body: JSON.stringify(data)
     }).then( (res) => {
@@ -53,7 +54,12 @@ const apis = {
    * Using fetch to get all the rates.
    */
   get rates() {
-    return fetch(this.url.rates)
+    return fetch(this.url.rates, {
+      method: 'GET',
+      headers: {
+        'apikey': 'a734c12090904aeba2e65919f5d52b48'
+      }
+    })
       .then( (response) => {
         if (response.ok) {
           return response.json();
@@ -71,7 +77,12 @@ const apis = {
   },
 
   get countries() {
-    return fetch(this.url.countries).then( (response) => {
+    return fetch(this.url.countries, {
+      method: 'GET',
+      headers: {
+        'apikey': 'a734c12090904aeba2e65919f5d52b48'
+      }
+    }).then( (response) => {
       if (response.ok) {
         return response.json();
       }
@@ -83,7 +94,12 @@ const apis = {
 
   distribution(country) {
     console.log('API distribution:', country);
-    return fetch(`${urlRoot}/rates/${country}/distribution`).then( (response) => {
+    return fetch(`${urlRoot}/rates/${country}/distribution`, {
+      method: 'GET',
+      headers: {
+        'apikey': 'a734c12090904aeba2e65919f5d52b48'
+      }
+    }).then( (response) => {
       if (response.ok) {
         return response.json();
       }
